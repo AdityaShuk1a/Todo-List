@@ -56,7 +56,7 @@ const Home = () => {
           <h1 className='text-8xl ml-11   text-white font-semibold mt-9  tracking-tight  ' >Tasks</h1>
           </div>
           <div className='w-[90%] flex absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-40%] items-center justify-center bg-green-300 h-[65%]'  >
-              <div className='w-[90%] h-[90%] bg-white p-9  justify-center' >
+              <div className='w-[90%] h-[90%] bg-white p-9 overflow-x-auto justify-center' >
               {tasks.map((data, index) => ( 
                 <GetTask key={index} data={data} /> 
                 ))}
