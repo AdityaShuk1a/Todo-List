@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GetTask from './components/GetTask';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     
@@ -39,24 +40,26 @@ const Home = () => {
 
   return (
     <>
-    <div className='flex justify-center items-center w-screen h-full ' >
+    <div className='flex justify-center items-center w-screen h-full bg-[#29222a]' >
 
-      <div className='  flex h-[700px] w-[1200px] bg-zinc-800' >
-        <div className= ' w-[700px] h-full bg-zinc-900 relative' >
-            <h1 className='text-9xl ml-5  text-white font-semibold mt-9  tracking-tight  ' >To-Dos</h1>
-            <div className='absolute top-[50%] h-[200px] w-full bg-yellow-300 flex flex-col  items-center justify-center' > 
-            
-            <input type="text" placeholder='Todo'  className='  h-14  w-72'  onChange={(e)=>{setTask(e.target.value)}} />
-          <button onClick={handleAdd} className=' rounded-2xl  bg-black mt-5 text-white w-24  h-14 ' >Add</button>
+      <div className='  flex h-[700px] overflow-hidden rounded-2xl w-[1200px] bg-[#221c24]' >
+        <div className= ' w-[700px] h-full  bg-[#3b313d] relative' >
+            <h1 className='text-9xl ml-5  text-[#e6d7e9] font-semibold mt-9  tracking-tight  ' >To-Dos</h1>
+            <div className='absolute top-[50%] h-[200px] w-full  flex flex-col  items-center justify-center' > 
+            <div className='border border-black rounded-xl overflow-hidden' >
+
+            <input type="text" placeholder='Todo'  className='  p-2  h-14  w-72'  onChange={(e)=>{setTask(e.target.value)}} />
+            </div>
+          <button onClick={handleAdd} className=' rounded-2xl  bg-black mt-5 text-[#dbc3e0] w-24  h-14 ' >Add</button>
             </div>
             
         </div>
         <div className='w-full  relative   justify-center' >
-          <div className='bg-pink-600 w-full  '  >
-          <h1 className='text-8xl ml-11   text-white font-semibold mt-9  tracking-tight  ' >Tasks</h1>
+          <div className=' w-full  '  >
+          <h1 className='text-8xl ml-11   text-[#dbc3e0] font-semibold mt-9  tracking-tight  ' >Tasks</h1>
           </div>
-          <div className='w-[90%] flex absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-40%] items-center justify-center bg-green-300 h-[65%]'  >
-              <div className='w-[90%] h-[90%] bg-white p-9 overflow-x-auto justify-center' >
+          <div className='w-[90%] rounded-3xl flex absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-40%] items-center justify-center bg-[#29222a] h-[65%]'  >
+              <div className='w-[90%] h-[90%]   p-9 overflow-x-auto justify-center' >
               {tasks.map((data, index) => ( 
                 <GetTask key={index} data={data} /> 
                 ))}

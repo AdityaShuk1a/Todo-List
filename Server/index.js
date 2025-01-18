@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended : true}))
 
 const port = 5000;
 
@@ -28,6 +29,40 @@ app.get('/getTask', async (req,res)=>{
     }
 })
 
+app.delete('/deleteTask/:taskId', async (req, res) => {
+  try{
+    const id = req.params.taskId
+  // console.log(req.params())
+  if(!id){
+    res.send("id not found")
+  }
+  const deleteTask = await taskModel.findByIdAndDelete(id).then(() => {
+    res.send({"status" : 200, "message" : "task deleted succesfully"})
+  }).catch(()=>{
+    res.send({"status" : 400, "message" : "error occured try again later!"})
+  })
+
+  }catch (err){
+    console.log(err)
+  }
+  
+  // deleteTask();
+})
+
+app.put('/updateTask/:taskId', async (req, res) => {
+  try{
+    const id = req.params.taskId
+    const updateTask = await taskModel.findByIdAndUpdate(id, {task : req.body.task}).then(() => {
+      res.send({"status" : 200, "message" : "task deleted succesfully"})
+    }).catch(()=>{
+      res.send({"status" : 400, "message" : "error occured try again later!"})
+    })
+  }catch(err){
+    console.log(err)
+  }
+  
+  
+})
 
 // Connect to the database and start the server
 const startServer = async () => {
