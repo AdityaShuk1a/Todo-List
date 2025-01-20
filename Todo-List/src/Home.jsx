@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 import GetTask from './components/GetTask';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import CustomButton from './components/CustomButton';
+import CustomCursor from './components/CustomCursor';
 
 const Home = () => {
     
     const [task, setTask] = useState("");
     const [tasks, setTasks] = useState([])
+    // const [customC, setCustomC] = useState()
+    const [xAxis, setXAxis] = useState()
+    const [yAxis, setYAxis] = useState()
     
     
     useEffect(() => {
@@ -27,21 +32,31 @@ const Home = () => {
 
 
     const handleAdd = async () => {
-      await axios.post("http://localhost:5000/createTask",{task : task} ).then(()=>{
-        window.location.reload()
-      }).catch((err)=>{
-        console.error(err)
-      })
+      if(task.trim() === ""){
+        window.alert("Please enter your task");
+      }else{
+
+        await axios.post("http://localhost:5000/createTask",{task : task} ).then(()=>{
+          window.location.reload()
+        }).catch((err)=>{
+          console.error(err)
+        })
+      }
     }
 
-
+    
     
     
 
   return (
     <>
-    <div className='flex justify-center items-center w-screen h-full bg-[#29222a]' >
+      <CustomCursor x={xAxis} y={yAxis}  />
+    <div onMouseMove={(e)=>{ 
+      // console.log(e)
+      setXAxis(e.clientX);
+      setYAxis(e.clientY);
 
+       }} className='flex justify-center  items-center w-screen h-full bg-[#29222a]' >
       <div className='  flex h-[700px] overflow-hidden rounded-2xl w-[1200px] bg-[#221c24]' >
         <div className= ' w-[700px] h-full  bg-[#3b313d] relative' >
             <h1 className='text-9xl ml-5  text-[#e6d7e9] font-semibold mt-9  tracking-tight  ' >To-Dos</h1>
@@ -50,7 +65,8 @@ const Home = () => {
 
             <input type="text" placeholder='Todo'  className='  p-2  h-14  w-72'  onChange={(e)=>{setTask(e.target.value)}} />
             </div>
-          <button onClick={handleAdd} className=' rounded-2xl  bg-black mt-5 text-[#dbc3e0] w-24  h-14 ' >Add</button>
+            
+          <CustomButton handleAdd={handleAdd} buttonName={"Add"} />
             </div>
             
         </div>
