@@ -15,11 +15,11 @@ This is an advanced To-Do app with a responsive UI and modern animations, making
 
 4. CustomCursor
   This app features a CustomCursor that dynamically changes its position and design based on your interactions.
-![Calculator Icon]([https://github.com/AdityaShuk1a/Todo-List/blob/d5a6889f79923b539fec081d6d37d209be323a8d/Assets/CursorImage.jpeg])
+![image](https://github.com/user-attachments/assets/338c905f-ee3a-4ebb-9b87-32dfd25e9386)
 
 
 6. Responsive UI
-![Calculator Icon]([https://github.com/AdityaShuk1a/Todo-List/blob/d5a6889f79923b539fec081d6d37d209be323a8d/Assets/AppImage.jpeg])
+![image](https://github.com/user-attachments/assets/31110345-de93-4dae-a8ea-a66375aae832)
 
 Fully responsive design, ensuring a seamless experience on devices of all sizes
 
